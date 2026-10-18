@@ -1,0 +1,22 @@
+# asset-controlled-export-pipeline (受控资产导出管线)
+
+> 把 Ardot 画布上的品牌 / 社媒设计资产批量导出为受控本地素材库——PNG + SVG 双格式落盘，自动注入版权 / 溯源 / 许可元数据（可选接本地大模型逐张生成中文声明），并生成自描述受控索引。
+
+`asset-controlled-export-pipeline` 是一个遵循 Agent Skills 规范的技能发布包，分类：品牌资产 / Brand Assets，版本 1.0.0。可放入主流 AI Agent 的技能目录直接加载。
+
+## 核心
+
+- [SKILL.md](https://github.com/zhaoxinghua09-cell/asset-controlled-export-pipeline/blob/main/SKILL.md): 技能主文件（YAML frontmatter + 全量方法与触发词）
+- [manifest.json](https://github.com/zhaoxinghua09-cell/asset-controlled-export-pipeline/blob/main/manifest.json): 技能元数据（名称 / 版本 / 许可 / 描述）
+- [README.md](https://github.com/zhaoxinghua09-cell/asset-controlled-export-pipeline/blob/main/README.md): 项目说明与快速开始
+- [scripts/download_template.py](https://github.com/zhaoxinghua09-cell/asset-controlled-export-pipeline/blob/main/scripts/download_template.py): 从 CDN 直链批量下载 PNG/SVG
+- [scripts/inject_model_text.py](https://github.com/zhaoxinghua09-cell/asset-controlled-export-pipeline/blob/main/scripts/inject_model_text.py): 注入版权/溯源元数据（可选本地模型）
+
+## 可选
+
+- [README.en.md](https://github.com/zhaoxinghua09-cell/asset-controlled-export-pipeline/blob/main/README.en.md): 英文版说明
+- [AGENTS.md](https://github.com/zhaoxinghua09-cell/asset-controlled-export-pipeline/blob/main/AGENTS.md): 给 AI Agent 的工作指引
+- [llms-full.txt](https://github.com/zhaoxinghua09-cell/asset-controlled-export-pipeline/blob/main/llms-full.txt): 完整文本（供长上下文模型）
+- [SECURITY.md](https://github.com/zhaoxinghua09-cell/asset-controlled-export-pipeline/blob/main/SECURITY.md): 安全策略
+- [CONTRIBUTING.md](https://github.com/zhaoxinghua09-cell/asset-controlled-export-pipeline/blob/main/CONTRIBUTING.md): 贡献指南
+- [LICENSE](https://github.com/zhaoxinghua09-cell/asset-controlled-export-pipeline/blob/main/LICENSE): MIT 许可

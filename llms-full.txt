@@ -1,0 +1,58 @@
+# asset-controlled-export-pipeline (受控资产导出管线) — 完整文本
+
+本文件为 llms.txt 标准的「完整版」，供长上下文模型一次性读取本仓库的完整说明。
+
+## 这是什么
+
+`asset-controlled-export-pipeline` 是一个 Agent Skill 发布包，分类 品牌资产 / Brand Assets，版本 1.0.0。
+
+一句话：把 Ardot 画布上的品牌 / 社媒设计资产批量导出为受控本地素材库——PNG + SVG 双格式落盘，自动注入版权 / 溯源 / 许可元数据（可选接本地大模型逐张生成中文声明），并生成自描述受控索引。
+
+## 解决什么问题
+
+素材外发受控分发：双格式落盘 + 元数据注入 + 可追溯索引。对应典型提问：
+
+```text
+「素材外发怎么防盗用」
+「VI 资料怎么受控分发」
+「这张图是谁做的、什么时候做的」
+```
+
+## 特性
+
+- 双格式落盘：PNG + SVG 同时导出，落在受控本地素材库
+- 元数据注入：PNG 写 iTXt + XMP，SVG 写 <metadata> RDF（dc:description + mx:aiStatement）
+- 可选本地大模型文案：接 localhost:8080 逐张生成中文声明，不可达时回退结构化模板
+- 受控索引：在画布存档页生成自描述 _asset_index.json，回答「这张图谁做的、什么时候做的」
+- 证据链留痕：导出链路按审计留痕，资产权属按注册方法论登记为可核验属性
+- 可复跑：先从 _backup 还原干净原图再注入，避免元数据叠加
+
+## 快速开始
+
+```bash
+# 1. 克隆本仓库
+git clone https://github.com/zhaoxinghua09-cell/asset-controlled-export-pipeline.git
+cd asset-controlled-export-pipeline
+
+# 2. 安装依赖（PIL 用于 PNG/XMP 注入）
+pip install pillow
+
+# 3. 从 CDN 直链批量下载（urls.json: {node_id: {"png":..,"svg":..}}）
+python scripts/download_template.py --map urls.json
+
+# 4. 注入版权 / 溯源元数据（--template = 不调用模型，用结构化模板文案）
+python scripts/inject_model_text.py --template
+```
+
+## 触发词
+
+素材批量导出 · 受控素材库 · VI 资料分发 · 版权元数据 · 资产溯源 · PNG/SVG · 元数据注入 · asset export · provenance。
+
+## 许可与权利
+
+MIT 许可。权利人「赵兴华 / Steven Zhao·China」。MedXpert、SynomosAI、LGD 等为项目标识，均未申请实体注册、未申请商标注册。完整条款见 LICENSE。联系：zhaoxinghua06@126.com ｜ ORCID 0009-0001-0512-1237。
+
+## 链接
+
+- 仓库: https://github.com/zhaoxinghua09-cell/asset-controlled-export-pipeline
+- 技能主文件: https://github.com/zhaoxinghua09-cell/asset-controlled-export-pipeline/blob/main/SKILL.md
